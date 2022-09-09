@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     }
   });
-  sequelize.define('Genre', {
+  sequelize.define('genre', {
     id:{
       type: DataTypes.INTEGER,
       primaryKey: true
