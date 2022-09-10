@@ -10,30 +10,34 @@ const { API_KEY } = process.env;
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/videogames', async(req, res) => {
+router.get('/videogames', async(req, res, next) => {
     
     try{
-        const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
-        if(games){
-            res.status(200).json(games.data.results)
+        if(!req.query.name){
+            const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
+            if(games){
+                res.status(200).json(games.data.results)
+            }
         } else {
-            res.send('Los juegos no peden mostrarse')
+        next()
         }
     } catch(e){
     res.status(400).send('Hubo un error en la consulta')
     }   
 })
 
-router.get('/genres', async(req, res) => {
+router.get('/videogames', async(req, res) => {
+    const { name } = req.query
+    
     try{
-        const genres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-        if(genres){
-            res.status(200).json(genres.data.results)
-        } else {
-            res.send('No existen los géneros')
+        const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
+        if(games){
+            const response = games.data.results
+            response.length = 15 
+            res.status(200).json(response)
         }
     } catch(e){
-        res.status(404).send('Hubo un error en la consulta')
+        res.status(400).send('Hubo un error al solicitar la información por query')
     }
 })
 
@@ -45,30 +49,27 @@ router.get('/videogames/:id', async(req, res) => {
         if(game){
             const gameById = game.data
             res.status(200).json(gameById)
-        } else {
-            res.send('El juego no existe')
         }
     } catch(e){
         res.status(400).send('Hubo un error al solicitar la información por params')
     }
 })
 
-router.get('/search', async(req, res) => {
-    const { game } = req.query
-    
+router.get('/genres', async(req, res) => {
     try{
-        const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${game}`)
-        if(games){
-            const gameByName = games.data.results
-            //const gameByName = games.data.results.filter(g => g.name.toLowerCase().includes(name))
-            res.status(200).json(gameByName)
-        } else {
-            res.send('No existe ninguna coincidencia')
+        const genres = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+        if(genres){
+            res.status(200).json(genres.data.results)
         }
     } catch(e){
-        res.status(400).send('Hubo un error al solicitar la información por query')
+        res.status(404).send('Hubo un error en la consulta')
     }
 })
+
+
+// router.post('/videogames', async(req, res) => {
+
+// })
 
 
 
