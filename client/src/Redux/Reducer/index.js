@@ -11,11 +11,11 @@ export default function rootReducer(state = inicialState, action){
                 ...state,
                 videogames: action.payload
             }
-            // case 'GET_DETAIL':
-            // return{
-            //     ...state,
-            //     videogameDetail: action.payload
-            // }
+        case 'GET_LIST':
+            return{
+                ...state,
+                videogame: action.payload
+            }
         default:
             return state
     }

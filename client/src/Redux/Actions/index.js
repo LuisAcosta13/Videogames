@@ -16,12 +16,12 @@ export function getAllVideogames(){
     }
 }
 
-export function getVideogame(id){
+export function getVideogame(game){
     return function(dispatch){
-        return axios.get('http://localhost:3001/videogames/' + id)
+        return axios.get('http://localhost:3001/videogames?name=' + game)
         .then(json => {
             dispatch({
-                type: 'GET_DETAIL',
+                type: 'GET_LIST',
                 payload: json.data
             })
         })

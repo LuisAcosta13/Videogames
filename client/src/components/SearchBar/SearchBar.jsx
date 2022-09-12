@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import { connect } from "react-redux";
 import { getVideogame } from "../../Redux/Actions";
 
-function SearchBar(){
-
+export default function SearchBar(){
+    
     const [game, setGame] = useState('')
     
     function handleInputChange(e){
@@ -11,7 +10,7 @@ function SearchBar(){
     }
 
     function handleSubmit(e){
-        getVideogame(game)
+        //getVideogame(game)
         setGame('')
     }
 
@@ -28,19 +27,6 @@ function SearchBar(){
             Search
         </button>
         </div>
+        
     )
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         videogame: state.videogameDetail
-//     }
-// }
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getVideogame: (id) => dispatch(getVideogame(id))
-    }
-}
-
-export default connect(mapDispatchToProps)(SearchBar)
