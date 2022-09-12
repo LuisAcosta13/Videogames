@@ -1,18 +1,20 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './App.css';
 import LandingPage from './components/LandingPage/LandingPage';
-import SearchBar from './components/SearchBar/SearchBar';
+import NavBar from './components/NavBar/NavBar';
+//import VideogameDetail from './components/VideogameDetail/VideogameDetail';
+import { Videogames } from './components/Videogames/Videogames';
 
 function App() {
   return (
     <div className="App">
 
-      <Switch>
+      <React.Fragment>
         <Route exact path='/' component={LandingPage}/>
-
-        <Route path='/videogames' component={SearchBar}/>
-      </Switch>
+        <Route path='/videogames' component={NavBar}/>
+        <Route path='/videogames' component={Videogames}/>
+      </React.Fragment>
     </div>
   );
 }
