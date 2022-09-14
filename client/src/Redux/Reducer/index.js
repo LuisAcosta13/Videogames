@@ -14,7 +14,7 @@ export default function rootReducer(state = inicialState, action){
         case 'GET_LIST':
             return{
                 ...state,
-                videogame: action.payload
+                videogames: action.payload
             }
         default:
             return state

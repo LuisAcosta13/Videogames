@@ -14,6 +14,7 @@ function App() {
         <Route path='/videogames' component={NavBar}/>
         <Route exact path='/videogames' component={Videogames}/>
         
+        
       </React.Fragment>
     </div>
   );

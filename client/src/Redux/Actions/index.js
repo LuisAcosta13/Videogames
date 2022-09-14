@@ -18,7 +18,7 @@ export function getAllVideogames(){
 
 export function getVideogame(game){
     return function(dispatch){
-        return axios.get('http://localhost:3001/videogames?name=' + game)
+        return axios.get(`http://localhost:3001/videogames?name=${game}`)
         .then(json => {
             dispatch({
                 type: 'GET_LIST',
