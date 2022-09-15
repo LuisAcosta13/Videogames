@@ -10,7 +10,6 @@ export default function NavBar(){
                 <Link className='LinkHome' to='/videogames'><h2>Videogames</h2></Link>
                 <Link className='LinkOne'to='/'><span>Create your game</span></Link>
                 <span>About me</span>
-                {<SearchBar/>}
             </div>
         </div>
     )

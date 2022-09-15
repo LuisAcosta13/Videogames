@@ -1,15 +1,16 @@
 .NavBar{
-    background-color: rgb(28, 28, 28);
+    background-color: rgb(0, 0, 0);
     padding: 1px;
-    color: white;
+    color: rgb(203, 202, 202);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-weight: 800;
 }
 
 .LinkHome, .LinkOne, .span{
     text-decoration: none;
-    color: white
+    color: rgb(203, 202, 202)
 }
 
 

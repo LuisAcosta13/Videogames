@@ -1,0 +1,43 @@
+.Body{
+    background-color: rgb(32, 32, 35);
+}
+
+.Gallery{
+    display: inline-block;
+    margin-left: 6%;
+}
+.List{
+    display: none;
+}
+
+.SearchBar{
+    display: inline-table;
+    padding: 30px;
+    justify-content: center;
+}
+
+input, button{
+    text-align: center;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    color: rgb(203, 202, 202);
+    background-color: rgb(64, 64, 67);
+}
+
+button{
+    width: 30%;
+    margin: 10px;
+}
+
+input::placeholder{
+    color: rgb(203, 202, 202);
+    text-align: center;
+}
+
+button:hover{
+    background-color: rgb(216, 216, 216);
+    color: rgb(25, 25, 25);
+}

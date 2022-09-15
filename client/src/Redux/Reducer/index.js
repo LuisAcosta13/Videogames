@@ -1,5 +1,6 @@
 const inicialState = {
     videogames: [],
+    videogamesList: [],
     videogameDetail: {}
 }
 
@@ -14,7 +15,7 @@ export default function rootReducer(state = inicialState, action){
         case 'GET_LIST':
             return{
                 ...state,
-                videogames: action.payload
+                videogamesList: action.payload
             }
         default:
             return state

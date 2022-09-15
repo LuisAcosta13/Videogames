@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const axios = require('axios')
-import {Videogame, Genre} from '../db'
+const { Videogame, Genre } = require('../db.js')
 const { Op } = require('sequelize')
 
 // Importar todos los routers;
@@ -19,14 +19,16 @@ router.get('/videogames', async (req, res, next) => {
         if (!req.query.name) {
             const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
 
-            //const gamesDB = await Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: [] /*puede ser {attributes: []}*/ } })
+            const apiGames = games.data.results
 
-            //const allGames = games.data.results.concat(gamesDB)
+            //const gamesDB = Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: [] /*puede ser {attributes: []}*/ } })
+
+            //const allGames = apiGames.concat(gamesDB)
 
             //if(allGames){
-            if (games) {
+            if (apiGames) {
                 //res.status(202).json(allGames)
-                res.status(202).json(games.data.results)
+                res.status(202).json(apiGames)
             }
         } else {
             next()
