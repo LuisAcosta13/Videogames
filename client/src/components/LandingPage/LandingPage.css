@@ -1,0 +1,31 @@
+.LandingPage{
+    background-image: url('https://c.tenor.com/cZvfUv6UugAAAAAd/dark-souls-sit.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+}
+
+.Enter{
+    position: absolute;
+    bottom: 45%;
+    left: 47%;
+    text-decoration: none;
+    color: rgb(203, 202, 202);
+    background-color: rgb(64, 64, 67);
+    border-style: groove;
+    border-radius: 50px;
+    width: 7%;
+}
+
+.Enter:hover{
+    background-color: rgb(216, 216, 216);
+    color: rgb(25, 25, 25);
+}

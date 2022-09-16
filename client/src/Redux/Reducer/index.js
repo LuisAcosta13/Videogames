@@ -5,7 +5,6 @@ const inicialState = {
 }
 
 export default function rootReducer(state = inicialState, action){
-    console.log('antes: ' + state.videogames)
     switch(action.type){
         case 'GET_ALL':
             return{
@@ -16,6 +15,11 @@ export default function rootReducer(state = inicialState, action){
             return{
                 ...state,
                 videogamesList: action.payload
+            }
+        case 'GET_DETAIL':
+            return{
+                ...state,
+                videogameDetail: action.payload
             }
         default:
             return state

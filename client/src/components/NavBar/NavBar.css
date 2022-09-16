@@ -6,6 +6,7 @@
     justify-content: space-around;
     align-items: center;
     font-weight: 800;
+    font-size: 100%;
 }
 
 .LinkHome, .LinkOne, .span{

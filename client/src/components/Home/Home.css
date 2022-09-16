@@ -2,17 +2,9 @@
     background-color: rgb(32, 32, 35);
 }
 
-.Gallery{
-    display: inline-block;
-    margin-left: 6%;
-}
-.List{
-    display: none;
-}
-
 .SearchBar{
     display: inline-table;
-    padding: 30px;
+    margin-top: 30px;
     justify-content: center;
 }
 
@@ -40,4 +32,8 @@ input::placeholder{
 button:hover{
     background-color: rgb(216, 216, 216);
     color: rgb(25, 25, 25);
+}
+
+.List{
+    display: none;
 }

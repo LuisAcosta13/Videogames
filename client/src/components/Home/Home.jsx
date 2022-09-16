@@ -9,7 +9,6 @@ import './Home.css'
 export const Home = () => {
 
     const videogame = useSelector(state => state.videogames)
-
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -70,14 +69,14 @@ export const Home = () => {
                 <button onClick={() => clean()}>
                     Clean
                 </button>
-            
             </div>
-            
-            <div id='List' className="List">
-                {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
-            </div>
-            <div id='Principal' className="Gallery">
-                {videogame && videogame.map(game => {return(<VideogameCard key={game.id} img={game.background_image} name={game.name} genres={game.genres.map(g => <p>{g.name}</p>)}/>)})}
+            <div>
+                <div id='List' className="List">
+                    {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
+                </div>
+                <div id='Principal' className="Gallery">
+                    {videogame && videogame.map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} genres={game.genres.map(g => <p>{g.name}</p>)}/>)})}
+                </div>
             </div>
         </div>
     )
