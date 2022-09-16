@@ -18,6 +18,8 @@
 }
 
 img{
+    text-decoration: none;
+    color: white;
     position: relative;
     left: 0%;
     top: 10%;
