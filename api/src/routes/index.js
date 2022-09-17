@@ -17,18 +17,21 @@ router.get('/videogames', async (req, res, next) => {
 
     try {
         if (!req.query.name) {
-            const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
+            
+            const { page } = req.query
+
+            const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`)
 
             const apiGames = games.data.results
 
-            //const gamesDB = Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: [] /*puede ser {attributes: []}*/ } })
+            const gamesDB = Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: {attributes: []}} })
 
-            //const allGames = apiGames.concat(gamesDB)
+            const allGames = apiGames.concat(gamesDB)
 
-            //if(allGames){
-            if (apiGames) {
-                //res.status(202).json(allGames)
-                res.status(202).json(apiGames)
+            if(allGames){
+            //if (apiGames) {
+                res.status(202).json(allGames)
+                //res.status(202).json(apiGames)
             }
         } else {
             next()
@@ -44,8 +47,10 @@ router.get('/videogames', async (req, res) => {
     try {
         const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
         
-        //const gamesDB = await Videogame.findAll({ where: include: { model: Genre, attributes: ['name'], through: [] /*puede ser {attributes: []}*/ } })
+        //const gamesDB = Videogame.findAll({ where: include: { model: Genre, attributes: ['name'], through: [] /*puede ser {attributes: []}*/ } })
         
+        //const allGames = apiGames.concat(gamesDB)
+
         if (games) {
             const response = games.data.results
             response.length = 15
@@ -86,7 +91,7 @@ router.post('/videogames', async (req, res) => {
 
     const newGame = await Videogame.create({ name, description, release, rating, platforms })
 
-    const genreDB = await Genre.findAll({ where: { name: genre} })
+    const genreDB = Genre.findAll({ where: { name: genre} })
 
     newGame.addGenre(genreDB)
 
