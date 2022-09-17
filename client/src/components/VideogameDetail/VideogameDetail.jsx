@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetail } from "../../Redux/Actions";
 import './VideogameDetail.css'
-import NavBar from "../NavBar/NavBar";
 
 export default function VideogameDetail(){
     
@@ -15,21 +14,31 @@ export default function VideogameDetail(){
     useEffect(() => {
         console.log(id)
         dispatch(getDetail(id))
-
+        
     }, [])        
-    
-    const image = detail.background_image_additional
-    const Name = JSON.stringify(detail.name)
-    const description = JSON.stringify(detail.description)
 
     return(
         detail  ?   <div>
-                    <NavBar/>
                         <div className="DetailPage">
+                            <div>
+                                <Link to='/videogames'><button>Back</button></Link>
+                            </div>
                             <div className="DetailCard">
-                                <img className='ImageDetail' src={image} alt={Name}/> <br/>
-                                <h1 className="NameDetail">{Name}</h1><br/>
-                                <h4 className="Description">{description}</h4><br/>
+                                <h1 className="NameDetail">{detail.name}</h1><br/>
+                                <img className='ImageDetail' src={detail.background_image_additional} alt={detail.name}/> <br/>
+                                <h4 className="Rating">★ {detail.rating_top}</h4>
+                                <div>
+                                {detail.genres && detail.genres.map(g => <p>{g.name}</p>)}
+                                </div>
+                                <h5 className="Date">Launching date: {detail.released}</h5>
+                                <h5 className="Description">{detail.description_raw}</h5><br/>
+                                <div>
+                                    <h4 className="Platforms">Available on: {detail.platforms && detail.platforms.map(p => <p>{p.platform.name}</p>)}</h4>
+                                </div>
+                            </div>
+
+                            <div>
+                                <Link to='/videogames'><button>Back</button></Link>
                             </div>
                         </div>
                     </div> : <div>Loading...</div>

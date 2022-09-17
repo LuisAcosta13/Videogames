@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames, getVideogame } from "../../Redux/Actions";
-import NavBar from "../NavBar/NavBar";
+import Pagination from "../Pagination/Pagination";
 import VideogameCard from "../VideogameCard/VideogameCard";
 import './Home.css'
 
+var page = 1
 
 export const Home = () => {
 
     const videogame = useSelector(state => state.videogames)
+    videogame.length = 15
     const dispatch = useDispatch()
+    
 
     useEffect(() => {
-        dispatch(getAllVideogames())
+        dispatch(getAllVideogames(page))
     }, [])
 
     const videogameList = useSelector(state => state.videogamesList)
@@ -47,13 +50,23 @@ export const Home = () => {
             }, 1000)
         }
     }
+    
+    function onPrevious(){
+        if(page > 1){
+          page--
+        dispatch(getAllVideogames(page))  
+        }
+    }
+
+    function onNext(){
+        if(page < 100){
+            page++
+            dispatch(getAllVideogames(page))
+        }
+    }
 
     return(
         <div className="Body">
-            <div>
-                {<NavBar/>}
-            </div>
-
             <div className="SearchBar">
                 <input 
                     id='input' 
@@ -62,6 +75,7 @@ export const Home = () => {
                     placeholder='Find a game...'
                     value={game}
                     onChange={(e) => handleInputChange(e)}
+                    onKeyDown={(e) =>{if(e.key === 'Enter'){handleSubmit()}}}
                 />
                 <button onClick={() => handleSubmit()}>
                     Search
@@ -70,13 +84,14 @@ export const Home = () => {
                     Clean
                 </button>
             </div>
-            <div>
-                <div id='List' className="List">
-                    {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
-                </div>
-                <div id='Principal' className="Gallery">
-                    {videogame && videogame.map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} genres={game.genres.map(g => <p>{g.name}</p>)}/>)})}
-                </div>
+
+            <div id='List' className="List">
+                {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
+            </div>
+            <div id='Principal' className="Gallery">
+                <Pagination onPrevious={onPrevious} onNext={onNext} page={page}/>
+                {videogame && videogame.map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} genres={game.genres.map(g => <p>{g.name}</p>)}/>)})}
+                <Pagination onPrevious={onPrevious} onNext={onNext} page={page}/>
             </div>
         </div>
     )

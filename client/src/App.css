@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url('https://c.tenor.com/cZvfUv6UugAAAAAd/dark-souls-sit.gif');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .App-logo {

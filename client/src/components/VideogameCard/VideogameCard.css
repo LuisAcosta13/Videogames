@@ -7,19 +7,18 @@
     margin-top: 2%;
     border: none;
     border-radius: 10px;
-    background-color: rgba(14, 14, 14, 0.719);
+    background-color: rgba(14, 14, 14, 0.92);
 
 }
 
 .Card:hover{
-    cursor: pointer;
     transition: .5s;
     transform: scale(1.5)
 }
 
-img{
+.Img{
     text-decoration: none;
-    color: white;
+    color: rgb(203, 202, 202);
     position: relative;
     left: 0%;
     top: 10%;
@@ -29,8 +28,12 @@ img{
     border-radius: 7px;
 }
 
+.Img:hover{
+    cursor: pointer;
+}
+
 .Name{
-    color: white;
+    color: rgb(203, 202, 202);
     font-size: smaller;
     position: relative;
 }
@@ -39,9 +42,9 @@ p{
     display: inline-grid;
     font-size: 70%;
     font-weight: 500;
-
+    color: rgb(203, 202, 202);
     width: 70px;
-    background-color: rgb(93, 67, 155);
+    background-color: rgb(64, 64, 67);
     border-radius: 10px;
     margin: 5px;
 }

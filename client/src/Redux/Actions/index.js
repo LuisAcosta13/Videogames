@@ -1,8 +1,8 @@
 const axios = require('axios')
 
-export function getAllVideogames(){
+export function getAllVideogames(page){
     return function (dispatch){
-        return axios('http://localhost:3001/videogames')
+        return axios.get(`http://localhost:3001/videogames?page=${page}`)
         .then(json => { 
             dispatch({
                 type: 'GET_ALL',
@@ -16,7 +16,7 @@ export function getAllVideogames(){
 export function getVideogame(game){
     return function(dispatch){
         return axios.get(`http://localhost:3001/videogames?name=${game}`)
-        .then(json => { console.log(json.data)
+        .then(json => {
             dispatch({
                 type: 'GET_LIST',
                 payload: json.data

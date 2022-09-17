@@ -8,7 +8,6 @@ export default function NavBar(){
             <div className="NavBar">
                 <Link className='LinkHome' to='/videogames'><h2>Videogames</h2></Link>
                 <Link className='LinkOne'to='/'><span>Create your game</span></Link>
-                <span>About me</span>
             </div>
         </div>
     )

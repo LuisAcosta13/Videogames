@@ -7,7 +7,7 @@ export default function VideogameCard(props){
             
                 <div className="Card">
                     <Link to={`/videogames/${props.id}`}>
-                        <img src={props.img} alt={props.name}/>
+                        <img className="Img" src={props.img} alt={props.name}/>
                     </Link>
                     <h2 className="Name">{props.name}</h2>
                     <h4 className="Genres">{props.genres}</h4>
