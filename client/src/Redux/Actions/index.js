@@ -39,3 +39,42 @@ export function getDetail(id){
         .catch(err => console.log(err))
     }
 }
+
+export function orderByRating(page){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        .then(json => { console.log('Ordenando por rating')
+            dispatch({
+                type: 'ORDER_BY_RATING',
+                payload: json.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+export function orderByAsc(page){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        .then(json => {
+            dispatch({
+                type: 'ORDER_ASC',
+                payload: json.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+export function orderByDesc(page){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        .then(json => {
+            dispatch({
+                type: 'ORDER_DESC',
+                payload: json.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}

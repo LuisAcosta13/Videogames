@@ -21,6 +21,36 @@ export default function rootReducer(state = inicialState, action){
                 ...state,
                 videogameDetail: action.payload
             }
+        case 'ORDER_BY_RATING':
+            return{
+                videogames: action.payload.sort(((a, b) => b.rating - a.rating))
+            }
+        case 'ORDER_ASC':
+            return{
+                videogames: action.payload.sort(function compare_name( a, b )
+                {
+                    if ( a.name < b.name){
+                        return -1;
+                    }
+                    if ( a.name > b.name){
+                        return 1;
+                    }
+                    return 0;
+                })
+            }
+        case 'ORDER_DESC':
+            return{
+                videogames: action.payload.sort(function compare_name( a, b )
+                {
+                    if ( b.name < a.name){
+                        return -1;
+                    }
+                    if ( b.name > a.name){
+                        return 1;
+                    }
+                    return 0;
+                })
+            }
         default:
             return state
     }

@@ -23,25 +23,36 @@
     color: rgb(203, 202, 202)
 }
 
-.Rating{
-    display: inline-block;
-    width: 38px;
-    height: 25px;
-    color: rgb(203, 202, 202); 
-    background-color: rgba(14, 14, 14, 0.831);
-    border-radius: 7px;
-    
-}
-
 .Date{
     display: inline-block;
     width: 20%;
-
     color: rgb(203, 202, 202);
     background-color: rgba(14, 14, 14, 0.831);
     border-radius: 7px;
     padding: 20px;
 }
+
+.Rating{
+    display: inline-block;
+    margin-left: 50%;
+    width: 50px;
+    height: 32px;
+    font-size: 22px;
+    color: rgb(203, 202, 202); 
+    background-color: rgba(46, 37, 37, 0.831);
+    border-radius: 7px;
+    
+}
+
+.Categories{
+    margin-left: 8%;
+    position: relative;
+    right: 5%;
+    font-size: 15px;
+    width: 10%;
+    background-color: rgba(14, 14, 14, 0.831);
+}
+
 .Description{
     margin: 20px;
     color: rgb(203, 202, 202);

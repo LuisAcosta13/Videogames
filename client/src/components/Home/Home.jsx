@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideogames, getVideogame } from "../../Redux/Actions";
+import { getAllVideogames, getVideogame, orderByAsc, orderByDesc, orderByRating } from "../../Redux/Actions";
 import Pagination from "../Pagination/Pagination";
 import VideogameCard from "../VideogameCard/VideogameCard";
 import './Home.css'
 
 var page = 1
+var byAsc = false
+var byDesc = false
+var byRating = false
 
 export const Home = () => {
 
     const videogame = useSelector(state => state.videogames)
     videogame.length = 15
     const dispatch = useDispatch()
-    
 
     useEffect(() => {
-        dispatch(getAllVideogames(page))
+        if(byRating === true){
+            dispatch(orderByRating(page))
+        } else if (byAsc === true){
+            dispatch(orderByAsc(page))
+        } else if(byDesc === true) {
+            dispatch(orderByDesc(page))
+        } else {
+            dispatch(getAllVideogames(page))
+        }
     }, [])
 
     const videogameList = useSelector(state => state.videogamesList)
@@ -50,18 +60,64 @@ export const Home = () => {
             }, 1000)
         }
     }
+
+    function onSelected(){
+        if(document.getElementById('select').selectedIndex === 1){
+            if(byAsc === false){
+                byAsc = true
+                byRating = false
+                dispatch(orderByAsc(page))
+            }
+        }
+        if(document.getElementById('select').selectedIndex === 2){
+            if(byDesc === false){
+               byDesc = true
+                byAsc = false
+                byRating = false
+                dispatch(orderByDesc(page)) 
+            }
+        }
+        if(document.getElementById('select').selectedIndex === 3){
+            if(byRating === false){
+                byRating = true
+                byAsc = false
+                dispatch(orderByRating(page))  
+            }
+        }
+        if(document.getElementById('select').selectedIndex === 0){
+            byAsc = false
+            byRating = false
+            dispatch(getAllVideogames(page))
+        }
+    }
     
     function onPrevious(){
         if(page > 1){
           page--
-        dispatch(getAllVideogames(page))  
+            if(byRating === true){
+                dispatch(orderByRating(page))
+            } else if (byAsc === true){
+                dispatch(orderByAsc(page))
+            } else if(byDesc === true) {
+                dispatch(orderByDesc(page))
+            } else {
+                dispatch(getAllVideogames(page))
+            }
         }
     }
 
     function onNext(){
         if(page < 100){
             page++
-            dispatch(getAllVideogames(page))
+            if(byRating === true){
+                dispatch(orderByRating(page))
+            } else if (byAsc === true){
+                dispatch(orderByAsc(page))
+            } else if(byDesc === true) {
+                dispatch(orderByDesc(page))
+            } else {
+                dispatch(getAllVideogames(page))
+            }
         }
     }
 
@@ -84,7 +140,15 @@ export const Home = () => {
                     Clean
                 </button>
             </div>
-
+            <div className="Filters">
+                Order by: 
+                <select name='select' id='select' onClick={onSelected}>
+                    <option className='option' id='option1' value='value1'>Default</option>
+                    <option className='option' id='option2' value='value2'>A - Z</option>
+                    <option className='option' id='option3' value='value3'>Z - A</option>
+                    <option className='option' id='option4' value='value4'>Rating</option>
+                </select>
+            </div>
             <div id='List' className="List">
                 {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
             </div>

@@ -1,23 +1,10 @@
-/* @keyframes changeColor {
-    from {
-        background-color: rgb(32, 32, 35);
-    }
-    to {
-        background-color: #301108;
-    }
-} */
-
-/* .Body{
-    animation: changeColor 5s infinite alternate
-} */
-
 .SearchBar{
     display: inline-table;
     margin-top: 30px;
     justify-content: center;
 }
 
-input, button{
+input, button, .Filters, select{
     text-align: center;
     width: 100%;
     padding: 5px;
@@ -27,7 +14,7 @@ input, button{
     background-color: rgba(14, 14, 14, 0.92);
 }
 
-button{
+button, select, option{
     width: 30%;
     margin: 10px;
 }
@@ -37,10 +24,17 @@ input::placeholder{
     text-align: center;
 }
 
-button:hover{
+button:hover, select:hover{
     background-color: rgba(216, 216, 216, 0.664);
     color: rgb(25, 25, 25);
     cursor: pointer;
+}
+
+.Filters{
+    width: 30%;
+    margin: 10px;
+    position: relative;
+    left: 34%
 }
 
 .List{

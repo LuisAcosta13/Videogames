@@ -6,7 +6,7 @@ export default function LandingPage(){
     
     return(
         <div className="LandingPage">
-            <Link className="Enter" to={'/videogames'}><h1>GO!</h1></Link>
+            <Link className="Enter" to={'/videogames'}><h1>Start quest</h1></Link>
         </div>
     )
 }

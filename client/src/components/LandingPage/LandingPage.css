@@ -1,3 +1,21 @@
+@keyframes changeBackgroungColor {
+    from {
+        background-color: rgba(14, 14, 14, 0.92);
+    }
+    to {
+        background-color: #301108e7;
+    }
+}
+
+@keyframes changeFontColor {
+    from {
+        color: rgb(117, 63, 15);
+    }
+    to {
+        color: #470701;
+    }
+}
+
 .LandingPage{
     background-image: url('https://c.tenor.com/cZvfUv6UugAAAAAd/dark-souls-sit.gif');
     background-repeat: no-repeat;
@@ -15,17 +33,18 @@
 
 .Enter{
     position: absolute;
-    bottom: 45%;
-    left: 47%;
+    bottom: 35%;
+    left: 45%;
     text-decoration: none;
+    font-size: 10px;
     color: rgb(203, 202, 202);
-    background-color: rgb(64, 64, 67);
+    animation: changeBackgroungColor 5s infinite alternate;
     border-style: groove;
     border-radius: 50px;
-    width: 7%;
+    width: 150px;
 }
 
 .Enter:hover{
-    background-color: rgb(216, 216, 216);
-    color: rgb(25, 25, 25);
+    background-color: rgba(14, 14, 14, 0.92);
+    animation: changeFontColor 1s infinite alternate;
 }

@@ -9,8 +9,17 @@
     font-size: 100%;
 }
 
+.Logo{
+    width: 75px;
+    margin-left: 7%;
+    margin-right: -50%;
+}
+
+.LinkHome{
+    animation: changeFontColor 3s infinite alternate;
+}
+
 .LinkHome, .LinkOne, .span{
-    margin-left: 5%;
     margin-right: 5%;
     text-decoration: none;
     color: rgb(203, 202, 202);
