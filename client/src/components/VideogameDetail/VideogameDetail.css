@@ -7,6 +7,7 @@
     border: none;
     border-radius: 10px;
     background-color: rgba(14, 14, 14, 0.719);
+    font-family: 'Alegreya SC', serif;
 }
 
 .ImageDetail{
@@ -35,9 +36,9 @@
 .Rating{
     display: inline-block;
     margin-left: 50%;
-    width: 50px;
-    height: 32px;
-    font-size: 22px;
+    width: 7%;
+    height: 25px;
+    font-size: 16px;
     color: rgb(203, 202, 202); 
     background-color: rgba(46, 37, 37, 0.831);
     border-radius: 7px;
@@ -56,6 +57,7 @@
 .Description{
     margin: 20px;
     color: rgb(203, 202, 202);
+    font-size: 18px;
     background-color: rgba(14, 14, 14, 0.831);
     border-radius: 7px;
     padding: 20px;

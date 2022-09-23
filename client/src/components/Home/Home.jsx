@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames, getVideogame, orderByAsc, orderByDesc, orderByRating } from "../../Redux/Actions";
-import Pagination from "../Pagination/Pagination";
-import VideogameCard from "../VideogameCard/VideogameCard";
+import Pagination from "../Pagination/Pagination.jsx";
+import VideogameCard from "../VideogameCard/VideogameCard.jsx";
 import './Home.css'
 
 var page = 1
@@ -26,7 +26,7 @@ export const Home = () => {
         } else {
             dispatch(getAllVideogames(page))
         }
-    }, [])
+    }, [dispatch])
 
     const videogameList = useSelector(state => state.videogamesList)
 
@@ -48,6 +48,7 @@ export const Home = () => {
 
     function clean(){
         hide('List')
+        show('Filters')
         show('Principal')
     }
 
@@ -103,6 +104,9 @@ export const Home = () => {
             } else {
                 dispatch(getAllVideogames(page))
             }
+        } else {
+            page = 100
+            dispatch(getAllVideogames(page))
         }
     }
 
@@ -118,6 +122,9 @@ export const Home = () => {
             } else {
                 dispatch(getAllVideogames(page))
             }
+        } else {
+            page = 1
+            dispatch(getAllVideogames(page))
         }
     }
 
@@ -140,21 +147,22 @@ export const Home = () => {
                     Clean
                 </button>
             </div>
-            <div className="Filters">
-                Order by: 
-                <select name='select' id='select' onClick={onSelected}>
-                    <option className='option' id='option1' value='value1'>Default</option>
-                    <option className='option' id='option2' value='value2'>A - Z</option>
-                    <option className='option' id='option3' value='value3'>Z - A</option>
-                    <option className='option' id='option4' value='value4'>Rating</option>
-                </select>
-            </div>
+
             <div id='List' className="List">
-                {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} genres={gameListed.genres.map(gen => <p>{gen.name}</p>)}/>)})}
+                {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} rating_top={gameListed.rating_top} genres={gameListed.genres.map(gen => <p key={gen.name}>{gen.name}</p>)}/>)})}
             </div>
             <div id='Principal' className="Gallery">
+                <div id='Filters' className="Filters">
+                    Order by: 
+                    <select name='select' id='select' onClick={onSelected}>
+                        <option className='option' id='option1' value='value1'>Default</option>
+                        <option className='option' id='option2' value='value2'>A - Z</option>
+                        <option className='option' id='option3' value='value3'>Z - A</option>
+                        <option className='option' id='option4' value='value4'>Rating</option>
+                    </select>
+                </div>
                 <Pagination onPrevious={onPrevious} onNext={onNext} page={page}/>
-                {videogame && videogame.map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} genres={game.genres.map(g => <p>{g.name}</p>)}/>)})}
+                {videogame && videogame.map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} rating_top={game.rating_top} genres={game.genres.map(g => <p key={g.name}>{g.name}</p>)}/>)})}
                 <Pagination onPrevious={onPrevious} onNext={onNext} page={page}/>
             </div>
         </div>

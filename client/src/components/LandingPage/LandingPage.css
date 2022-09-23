@@ -1,4 +1,5 @@
-@keyframes changeBackgroungColor {
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap');
+@keyframes changeBackgroundColor {
     from {
         background-color: rgba(14, 14, 14, 0.92);
     }
@@ -37,8 +38,9 @@
     left: 45%;
     text-decoration: none;
     font-size: 10px;
+    font-family: 'Alegreya SC', serif;
     color: rgb(203, 202, 202);
-    animation: changeBackgroungColor 5s infinite alternate;
+    animation: changeBackgroundColor 5s infinite alternate;
     border-style: groove;
     border-radius: 50px;
     width: 150px;

@@ -1,0 +1,42 @@
+.FormPage{
+    display: inline-grid;
+    width: 550px;
+    color: rgb(203, 202, 202);
+    font-family: 'Alegreya SC', serif;
+}
+
+.Form{
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 180px;
+    position: relative;
+    left: -30%;
+    width: 150%;
+    height: 120%;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(14, 14, 14, 0.719);
+}
+
+.grid{
+    margin: 5%;
+}
+
+.danger{
+    font-weight: 400;
+    color: red
+}
+
+.submit{
+    margin-bottom: 5%;
+    width: 40%;
+    height: 50%;
+    position: relative;
+    left: 130%
+}
+
+.submit:hover{
+    cursor: pointer;
+    background-color: rgba(14, 14, 14, 0.92);
+    animation: changeBackgroundColor 0.5s infinite alternate;
+}

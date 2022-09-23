@@ -11,6 +11,7 @@ input, button, .Filters, select{
     border: none;
     border-radius: 15px;
     color: rgb(203, 202, 202);
+    font-family: 'Alegreya SC', serif;
     background-color: rgba(14, 14, 14, 0.92);
 }
 

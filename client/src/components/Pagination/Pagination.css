@@ -1,5 +1,5 @@
 .Prev, .Next{
-    width: 3.5%;
+    width: 30px;
     height: 30px;
     position: relative;
 }
@@ -9,8 +9,8 @@
 }
 
 .PageNum{
-    font-size: 15px;
-    width: 1.5%;
+    font-size: 95%;
+    width: 20px;
     padding: 5px;
     border: none;
     border-radius: 15px;

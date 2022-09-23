@@ -1,7 +1,7 @@
 import React from "react";
 import './Pagination.css'
 
-export default function({onPrevious, onNext, page}){
+export default function Pagination({onPrevious, onNext, page}){
     
     function handlePrevious(){
         onPrevious()

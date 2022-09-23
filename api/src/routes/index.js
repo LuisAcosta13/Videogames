@@ -85,9 +85,9 @@ router.get('/genres', async (req, res) => {
 })
 
 router.post('/videogames', async (req, res) => {
-    const { name, description, release, rating, platforms, genre } = req.body
+    const { name, description, launch_date, rating, platforms, genre } = req.body
 
-    const newGame = await Videogame.create({ name, description, release, rating, platforms })
+    const newGame = await Videogame.create({ name, description, launch_date, rating, platforms })
 
     const genreDB = Genre.findAll({ where: { name: genre} })
 

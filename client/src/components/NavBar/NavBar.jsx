@@ -8,7 +8,7 @@ export default function NavBar(){
             <div className="NavBar">
                 <img className='Logo' src='https://www.pngplay.com/wp-content/uploads/12/Fornite-Black-Knight-PNG-Images-HD.png' alt='Knight'/>
                 <Link className='LinkHome' to='/videogames'><h2>LuishiGames</h2></Link>
-                <Link className='LinkOne'to='/'><span>Create your game</span></Link>
+                <Link className='LinkOne'to='/form'><span>Create your game</span></Link>
             </div>
         </div>
     )

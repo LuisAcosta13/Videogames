@@ -8,7 +8,7 @@
     border: none;
     border-radius: 10px;
     background-color: rgba(14, 14, 14, 0.92);
-
+    font-family: 'Alegreya SC', serif;
 }
 
 .Card:hover{
@@ -34,8 +34,19 @@
 
 .Name{
     color: rgb(203, 202, 202);
-    font-size: smaller;
+    font-size: 18px;
     position: relative;
+}
+
+.RatingTop{
+    display: block;
+    margin-left: 45%;
+    width: 12%;
+    height: 18px;
+    font-size: 12px;
+    color: rgb(203, 202, 202); 
+    background-color: rgba(46, 37, 37, 0.831);
+    border-radius: 7px;
 }
 
 p{
@@ -47,4 +58,5 @@ p{
     background-color: rgb(64, 64, 67);
     border-radius: 10px;
     margin: 5px;
+
 }

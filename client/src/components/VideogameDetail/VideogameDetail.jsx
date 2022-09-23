@@ -15,7 +15,7 @@ export default function VideogameDetail(){
         console.log(id)
         dispatch(getDetail(id))
         
-    }, [])        
+    }, [dispatch, id])        
 
     return(
         detail  ?   <div>
@@ -27,7 +27,7 @@ export default function VideogameDetail(){
                                 <h1 className="NameDetail">{detail.name}</h1><br/>
                                 <img className='ImageDetail' src={detail.background_image_additional} alt={detail.name}/> <br/>
                                 <h5 className="Date">Launching date: {detail.released}</h5>
-                                <h4 className="Rating">{detail.rating_top} ★</h4>
+                                <h4 className="Rating">{detail.rating} ★</h4>
                                 
                                 <div>
                                 {detail.genres && detail.genres.map(g => <p className="Categories">{g.name}</p>)}
