@@ -1,8 +1,8 @@
 const axios = require('axios')
 
-export function getAllVideogames(page){
+export function getAllVideogames(){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        return axios.get(`http://localhost:3001/videogames`)
         .then(json => { 
             dispatch({
                 type: 'GET_ALL',
@@ -53,9 +53,9 @@ export function orderByRating(page){
     }
 }
 
-export function orderByAsc(page){
+export function orderByAsc(){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        return axios.get(`http://localhost:3001/videogames`)
         .then(json => {
             dispatch({
                 type: 'ORDER_ASC',
@@ -68,10 +68,36 @@ export function orderByAsc(page){
 
 export function orderByDesc(page){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames?page=${page}`)
+        return axios.get(`http://localhost:3001/videogames`)
         .then(json => {
             dispatch({
                 type: 'ORDER_DESC',
+                payload: json.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+export function filterByGenre(genre){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/videogames`)
+        .then(json => {
+            dispatch({ 
+                type: 'FILTER_BY_GENRE',
+                payload: json.data.filter(g => g.genres[0].name === genre)
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+export function filterByDatabase(){
+    return function (dispatch){
+        return axios.get(`http://localhost:3001/videogames`)
+        .then(json => { 
+            dispatch({ 
+                type: 'FILTER_BY_DATABASE',
                 payload: json.data
             })
         })

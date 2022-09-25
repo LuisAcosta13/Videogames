@@ -13,26 +13,23 @@ router.get('/videogames', async (req, res) => {
 
     try {
         if (!req.query.name) {
-            var games
-            if(!req.query.page){
-                games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
-            } else {
-                const { page } = req.query
-                games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`)
-            }  
-            const apiGames = games.data.results
-            apiGames.length = 15
+            var games1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${1}`)
+            var games2 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${2}`)
+            var games3 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${3}`)
+            var games4 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${4}`)
+            var games5 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${5}`)
+            const gamesTotal = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results,games5.data.results)
             const gamesDB = await Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: {attributes: []}} })
-            const allGames = apiGames.concat(gamesDB)
+            const allGames = gamesTotal.concat(gamesDB)
             
             if(allGames){
                 res.status(200).json(allGames)
             }
         } else {
             const { name } = req.query
-            games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
+            const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
             const apiGames = games.data.results
-            const gamesDB = await Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: {attributes: []}} })
+            const gamesDB = await Videogame.findAll({where: { name: name }})
             const allGames = gamesDB.concat(apiGames)
     
             if (allGames) {

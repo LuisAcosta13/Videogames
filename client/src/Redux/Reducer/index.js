@@ -53,6 +53,14 @@ export default function rootReducer(state = inicialState, action){
                     return 0;
                 })
             }
+        case 'FILTER_BY_GENRE':
+            return {
+                videogames: action.payload
+            }
+        case 'FILTER_BY_DATABASE':
+        return {
+            videogames: action.payload.filter(g => g.id.length > 10)
+        }
         case 'GET_GENRES':
             return {
                 ...state,

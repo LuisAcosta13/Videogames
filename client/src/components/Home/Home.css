@@ -1,8 +1,3 @@
-.SearchBar{
-    display: inline-table;
-    margin-top: 30px;
-    justify-content: center;
-}
 
 input, button, .Filters, select{
     text-align: center;
@@ -15,7 +10,7 @@ input, button, .Filters, select{
     background-color: rgba(14, 14, 14, 0.92);
 }
 
-button, select, option{
+select, option{
     width: 30%;
     margin: 10px;
 }
@@ -32,10 +27,14 @@ button:hover, select:hover{
 }
 
 .Filters{
-    width: 30%;
+    width: 50%;
     margin: 10px;
     position: relative;
-    left: 34%
+    left: 24%
+}
+
+.ByGenreList{
+    display: 'none';
 }
 
 .List{

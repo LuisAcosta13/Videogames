@@ -5,11 +5,9 @@ import { getDetail } from "../../Redux/Actions";
 import './VideogameDetail.css'
 
 export default function VideogameDetail(){
-    
     const { id } = useParams()
     const detail = useSelector(state => state.videogameDetail)
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         console.log(id)
@@ -30,12 +28,12 @@ export default function VideogameDetail(){
                                 <h4 className="Rating">{detail.rating} ★</h4>
                                 
                                 <div>
-                                {detail.genres && detail.genres.map(g => <p className="Categories">{g.name}</p>)}
+                                {detail.genres && detail.genres.map(g => <p key={g.name} className="Categories">{g.name}</p>)}
                                 </div>
                                 
                                 <h5 className="Description">{detail.description_raw}</h5><br/>
                                 <div>
-                                    <h4 className="Platforms">Available on: {detail.platforms && detail.platforms.map(p => <p>{p.platform.name}</p>)}</h4>
+                                    <h4 className="Platforms">Available on: {detail.platforms && detail.platforms.map(p => <p key={p.platform.name}>{p.platform.name}</p>)}</h4>
                                 </div>
                             </div>
 

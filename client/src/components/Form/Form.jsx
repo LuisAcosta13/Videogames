@@ -107,7 +107,25 @@ export default function Form(){
                 <div className="grid">
                     <h4>Genres</h4>
                     <select className="SelectForm" name={newVideogame.genre} onChange={(e) => handleGenresSelect(e)}>
-                        {genresList.map(g => <option key={g.id} value={g.name}>{g.name}</option>)}
+                    <option className='option' id='filterOp3' value='Action'>Action</option>
+                        <option className='option' id='filterOp4' value='Shooter'>Shooter</option>
+                        <option className='option' id='filterOp5' value='Platformer'>Platformer</option>
+                        <option className='option' id='filterOp6' value='Family'>Family</option>
+                        <option className='option' id='filterOp7' value='Adventure'>Adventure</option>
+                        <option className='option' id='filterOp8' value='Simulation'>Simulation</option>
+                        <option className='option' id='filterOp9' value='Massively Multiplayer'>Massively Multiplayer</option>
+                        <option className='option' id='filterOp10' value='Educational'>Educational</option>
+                        <option className='option' id='filterOp11' value='Indie'>Indie</option>
+                        <option className='option' id='filterOp12' value='Puzzle'>Puzzle</option>
+                        <option className='option' id='filterOp13' value='Sports'>Sports</option>
+                        <option className='option' id='filterOp14' value='Card'>Card</option>
+                        <option className='option' id='filterOp15' value='RPG'>RPG</option>
+                        <option className='option' id='filterOp16' value='Arcade'>Arcade</option>
+                        <option className='option' id='filterOp17' value='Fighting'>Fighting</option>
+                        <option className='option' id='filterOp18' value='Strategy'>Strategy</option>
+                        <option className='option' id='filterOp19' value='Casual'>Casual</option>
+                        <option className='option' id='filterOp20' value='Racing'>Racing</option>
+                        <option className='option' id='filterOp21' value='Board Games'>Board Games</option>
                     </select><br/>
                     {newVideogame.genre.map(g => <b key={g}>{g}<br/></b> )}
                 </div>
