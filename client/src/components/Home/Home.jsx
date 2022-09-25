@@ -13,7 +13,7 @@ var byRating = false
 export const Home = () => {
 
     const videogame = useSelector(state => state.videogames)
-    videogame.length = 15
+    
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -106,7 +106,15 @@ export const Home = () => {
             }
         } else {
             page = 100
-            dispatch(getAllVideogames(page))
+            if(byRating === true){
+                dispatch(orderByRating(page))
+            } else if (byAsc === true){
+                dispatch(orderByAsc(page))
+            } else if(byDesc === true) {
+                dispatch(orderByDesc(page))
+            } else {
+                dispatch(getAllVideogames(page))
+            }
         }
     }
 
@@ -124,7 +132,15 @@ export const Home = () => {
             }
         } else {
             page = 1
-            dispatch(getAllVideogames(page))
+            if(byRating === true){
+                dispatch(orderByRating(page))
+            } else if (byAsc === true){
+                dispatch(orderByAsc(page))
+            } else if(byDesc === true) {
+                dispatch(orderByDesc(page))
+            } else {
+                dispatch(getAllVideogames(page))
+            }
         }
     }
 

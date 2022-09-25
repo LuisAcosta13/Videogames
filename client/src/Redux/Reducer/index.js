@@ -1,7 +1,9 @@
 const inicialState = {
     videogames: [],
     videogamesList: [],
-    videogameDetail: {}
+    videogameDetail: {},
+    genresList: [],
+    newGame:{}
 }
 
 export default function rootReducer(state = inicialState, action){
@@ -50,6 +52,16 @@ export default function rootReducer(state = inicialState, action){
                     }
                     return 0;
                 })
+            }
+        case 'GET_GENRES':
+            return {
+                ...state,
+                genresList: action.payload
+            }
+        case 'ADD_NEWGAME':
+            return {
+                ...state,
+                newGame: action.payload
             }
         default:
             return state

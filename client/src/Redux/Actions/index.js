@@ -78,3 +78,30 @@ export function orderByDesc(page){
         .catch(err => console.log(err))
     }
 }
+
+export function getGenres(){
+    return function (dispatch){
+        return axios.get('http://localhost:3001/genres')
+        .then(json => {
+            dispatch({
+                type: 'GET_GENRES',
+                payload: json.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}
+
+export function newGame(newVideogame){
+    return function (dispatch){
+        return axios.post('http://localhost:3001/videogames', newVideogame)
+        .then(res => {
+            console.log(res.data)
+            dispatch({
+                type: 'ADD_NEWGAME',
+                action: res.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+}

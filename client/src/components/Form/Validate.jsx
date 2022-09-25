@@ -21,10 +21,8 @@ export default function Validate(input) {
     if(!input.rating){
         errors.rating = 'Lauch date is required';
     } else if (!/[0-5]/.test(input.rating)){
-        errors.rating = 'This date is invalid'
+        errors.rating = 'This rating is invalid'
     }
 
     return errors;
-
-
 }

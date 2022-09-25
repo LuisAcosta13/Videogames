@@ -27,8 +27,16 @@
     color: red
 }
 
+.SelectForm{
+    position: relative;
+    width: 95%;
+    height: 18%;
+    top: -6%;
+    border: none;
+}
+
 .submit{
-    margin-bottom: 5%;
+    margin-bottom: 0%;
     width: 40%;
     height: 50%;
     position: relative;
@@ -37,6 +45,7 @@
 
 .submit:hover{
     cursor: pointer;
+    color: rgb(203, 202, 202);
     background-color: rgba(14, 14, 14, 0.92);
     animation: changeBackgroundColor 0.5s infinite alternate;
 }
