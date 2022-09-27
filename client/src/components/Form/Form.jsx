@@ -126,7 +126,12 @@ export default function Form(){
                     {newVideogame.genre.map(g => <b key={g}>{g}<br/></b> )}
                 </div>
 
-                <button className="submit" onClick={handleSubmit}>Enviar</button>
+                {(newVideogame.name && 
+                    newVideogame.description_raw && newVideogame.released && 
+                    newVideogame.rating && newVideogame.platforms.length > 0 && 
+                    newVideogame.genre.length > 0) ? 
+                    <button className="submit" onClick={handleSubmit}>Enviar</button> 
+                    : null}
             </div>
         </div>
     )

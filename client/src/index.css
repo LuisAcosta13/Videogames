@@ -10,6 +10,20 @@ body {
   background-attachment: fixed;
 }
 
+body::-webkit-scrollbar {
+  width: 10px; 
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgb(56, 56, 56);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(14, 14, 14, 0.92);
+  border-radius: 20px;
+  border: 3px solid rgb(56, 56, 56);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

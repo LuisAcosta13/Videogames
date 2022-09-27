@@ -8,10 +8,10 @@ export default function Validate(input) {
         errors.name = 'This name is invalid'
     }
   
-    if(!input.description){
-        errors.description = 'Description is required';
-    } else if ((!/\S/.test(input.description))){
-        errors.description = 'Description is invalid'
+    if(!input.description_raw){
+        errors.description_raw = 'Description is required';
+    } else if ((!/\S/.test(input.description_raw))){
+        errors.description_raw = 'Description is invalid'
     }
     
     if(!input.released){
