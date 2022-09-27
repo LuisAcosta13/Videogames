@@ -17,25 +17,26 @@
     }
 }
 
-.LandingPage{
-    background-image: url('https://c.tenor.com/cZvfUv6UugAAAAAd/dark-souls-sit.gif');
-    background-repeat: no-repeat;
-    background-size: cover;
+.Block{
+    background-color: rgba(0, 0, 0, 0.865);
+    color: rgb(203, 202, 202);
+    font-family: 'Alegreya SC', serif;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1000;
-    overflow: hidden;
+    left: 30%;
+    width: 500px;
+    height: 577px;
+}
+
+.Text{
+    position: relative;
+    top: 10%;
+    margin: 10%
 }
 
 .Enter{
     position: absolute;
-    bottom: 35%;
-    left: 45%;
+    bottom: 100px;
+    left: 35%;
     text-decoration: none;
     font-size: 10px;
     font-family: 'Alegreya SC', serif;
@@ -43,7 +44,7 @@
     animation: changeBackgroundColor 5s infinite alternate;
     border-style: groove;
     border-radius: 50px;
-    width: 150px;
+    width: 30%;
 }
 
 .Enter:hover{

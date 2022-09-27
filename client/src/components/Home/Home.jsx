@@ -5,13 +5,14 @@ import Pagination from "../Pagination/Pagination.jsx";
 import VideogameCard from "../VideogameCard/VideogameCard.jsx";
 import './Home.css'
 import SearchBar from "../SearchBar/SearchBar";
+import Loading from "../Loading/Loading";
 
 export const Home = () => {
     
     const dispatch = useDispatch()
     const videogames = useSelector(state => state.videogames)
     const [currentPage, setCurrentPage] = useState(0)
-    const[ pageNum, setPageNum ] = useState(1)
+    const [ pageNum, setPageNum ] = useState(1)
     const [filter, setFilter] = useState('')
 
     useEffect(() => {
@@ -67,7 +68,12 @@ export const Home = () => {
     function byFilter(){
         var e = document.getElementById('filter')
         if(e.selectedIndex === 0){
-            dispatch(getAllVideogames())
+            if(e.options[0].disabled === false){
+                setCurrentPage(0)
+                setPageNum(1)
+                dispatch(getAllVideogames())
+                e.options[0].disabled = true
+            }
         } else if(e.selectedIndex === 1){
             setCurrentPage(0)
             dispatch(filterByDatabase())
@@ -108,7 +114,7 @@ export const Home = () => {
                     </select>
                     Filter by:
                     <select name='filter' id='filter' defaultValue='All' onClick={byFilter}>
-                        <option  className='option0' disabled={true}>All</option>
+                        <option  className='option' disabled={true}>All</option>
                         <option className='option' id='filterOp2' value='filterVal2'>Created</option>
                         <option className='option' id='filterOp3' value='filterVal3'>Action</option>
                         <option className='option' id='filterOp4' value='filterVal4'>Shooter</option>
@@ -133,7 +139,7 @@ export const Home = () => {
                 </div>
                 <div>
                     {(videogames.length >= 15) ? <Pagination onPrevious={onPrevious} onNext={onNext} pageNum={pageNum} videogames={videogames.length}/>: null}
-                    {(filteredVideogames().length > 0) ? filteredVideogames().map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} rating_top={game.rating_top} genres={game.genres.map(g => <p key={g.name}>{g.name}</p>)}/>)}): <div>Nothing to see here</div>}
+                    {(filteredVideogames().length > 0) ? filteredVideogames().map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} rating_top={game.rating_top} genres={game.genres.map(g => <p key={g.name}>{g.name}</p>)}/>)}): <Loading/>}
                     {(videogames.length >= 15) ? <Pagination onPrevious={onPrevious} onNext={onNext} pageNum={pageNum} videogames={videogames.length}/>: null}
                 </div>
             </div>

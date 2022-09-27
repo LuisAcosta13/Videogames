@@ -1,0 +1,9 @@
+.LoadingPage{
+    display: flex;
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+    color: rgb(203, 202, 202);
+    font-family: 'Alegreya SC', serif;
+    font-size: 80px;
+}
