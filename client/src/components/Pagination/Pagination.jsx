@@ -1,7 +1,7 @@
 import React from "react";
 import './Pagination.css'
 
-export default function Pagination({onPrevious, onNext, page}){
+export default function Pagination({onPrevious, onNext, pageNum, videogames}){
     
     function handlePrevious(){
         onPrevious()
@@ -15,9 +15,9 @@ export default function Pagination({onPrevious, onNext, page}){
 
     return(
         <nav>
-            {<button className="Prev" onClick={handlePrevious}>◀</button>}
-            <p className="PageNum">{page}</p>
-            {<button className="Next" onClick={handleNext}>▶</button>}
+            {(pageNum > 1) ? <button className="Prev" onClick={handlePrevious}>◀</button> : null}
+            <p className="PageNum">{pageNum}</p>
+            {(pageNum < (videogames / 15)) ? <button className="Next" onClick={handleNext}>▶</button> : null}
         </nav>
     )
 }

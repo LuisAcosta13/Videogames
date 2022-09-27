@@ -6,7 +6,7 @@
 }
 
 #cleanButton{
-    display: none;
+    width: 10%;
     position: relative;
     margin-top: 2%
 }

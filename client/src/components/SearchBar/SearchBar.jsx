@@ -25,7 +25,6 @@ function clean(){
     hide('List')
     show('Filters')
     show('Principal')
-    hide('cleanButton')
 }
 function handleSubmit(){
    if(game){ 
@@ -36,7 +35,6 @@ function handleSubmit(){
         show('List')
         }, 1000)
     }
-    show('cleanButton')
 }
 
 return(
@@ -51,11 +49,14 @@ return(
                     onChange={(e) => handleInputChange(e)}
                     onKeyDown={(e) =>{if(e.key === 'Enter'){handleSubmit()}}}
                 />
-                <button id="cleanButton" onClick={() => clean()}>
-                    Clean
-                </button>
+
             </div>
             <div id='List' className="List">
+                <div>
+                    <button id="cleanButton" onClick={() => clean()}>
+                        Clean
+                    </button>
+                </div>
                 {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} rating_top={gameListed.rating_top} genres={gameListed.genres.map(gen => <p key={gen.name}>{gen.name}</p>)}/>)})}
             </div>
         </div>     
