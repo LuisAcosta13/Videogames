@@ -36,9 +36,9 @@
 .Rating{
     display: inline-block;
     margin-left: 50%;
-    width: 7%;
+    width: 50px;
     height: 25px;
-    font-size: 16px;
+    font-size: 100%;
     color: rgb(203, 202, 202); 
     background-color: rgba(46, 37, 37, 0.831);
     border-radius: 7px;
@@ -49,8 +49,8 @@
     margin-left: 8%;
     position: relative;
     right: 5%;
-    font-size: 15px;
-    width: 10%;
+    font-size: 100%;
+    width: 100px;
     background-color: rgba(14, 14, 14, 0.831);
 }
 
@@ -66,4 +66,14 @@
 .Platforms{
     color: rgb(203, 202, 202);
     margin: 20px;
+}
+
+@media screen and (max-width: 600px){
+    .Date{
+        width: 70%;
+    }
+    .Rating{
+        position: relative;
+        right: 25%;
+    }
 }

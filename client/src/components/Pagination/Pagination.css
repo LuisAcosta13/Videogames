@@ -21,3 +21,10 @@
 .Next{
     left: 35%;
 }
+
+@media screen and (max-width: 600px){
+    .PageNum{
+        position: relative;
+        left: 5%;
+    }
+}

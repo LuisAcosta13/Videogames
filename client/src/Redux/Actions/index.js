@@ -43,10 +43,10 @@ export function getDetail(id){
 export function filterByGenre(genre){
     return function (dispatch){
         return axios.get(`http://localhost:3001/videogames`)
-        .then(json => {
+        .then(json => { console.log()
             dispatch({ 
                 type: 'FILTER_BY_GENRE',
-                payload: json.data.filter(g => g.genres[0].name === genre)
+                payload: json.data.filter(g => typeof g.id === 'number' ? g.genres.some(e => e.name === genre) : g.genre.includes(genre))
             })
         })
         .catch(err => console.log(err))
@@ -59,19 +59,6 @@ export function filterByDatabase(){
         .then(json => { 
             dispatch({ 
                 type: 'FILTER_BY_DATABASE',
-                payload: json.data
-            })
-        })
-        .catch(err => console.log(err))
-    }
-}
-
-export function getGenres(){
-    return function (dispatch){
-        return axios.get('http://localhost:3001/genres')
-        .then(json => {
-            dispatch({
-                type: 'GET_GENRES',
                 payload: json.data
             })
         })

@@ -16,7 +16,8 @@ export default function VideogameDetail(){
     }, [dispatch, id])        
 
     return(
-        typeof detail.id === 'number'  ?   <div>
+        typeof detail.id === 'number'  ?   
+                    <div>
                         <div className="DetailPage">
                             <div>
                                 <Link to='/videogames'><button>Back</button></Link>
@@ -38,7 +39,9 @@ export default function VideogameDetail(){
                                 <Link to='/videogames'><button>Back</button></Link>
                             </div>
                         </div>
-                    </div> : <div>
+                    </div> 
+                    : 
+                    <div>
                         <div className="DetailPage">
                             <div>
                                 <Link to='/videogames'><button>Back</button></Link>

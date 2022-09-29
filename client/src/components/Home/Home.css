@@ -1,4 +1,3 @@
-
 input, button, .Filters, select{
     text-align: center;
     width: 100%;
@@ -33,10 +32,17 @@ button:hover, select:hover{
     left: 24%
 }
 
-.ByGenreList{
-    display: 'none';
-}
-
 .List{
     display: none;
+}
+
+@media screen and (max-width: 600px){
+    .Filters{
+        width: 94%;
+        position: relative;
+        left: 0%;
+    }
+    select, option{
+        width: 20%;
+    }
 }

@@ -57,7 +57,16 @@ return(
                         Clean
                     </button>
                 </div>
-                {videogameList && videogameList.map(gameListed => {return(<VideogameCard key={gameListed.id} id={gameListed.id} img={gameListed.background_image} name={gameListed.name} rating_top={gameListed.rating_top} genres={gameListed.genres.map(gen => <p key={gen.name}>{gen.name}</p>)}/>)})}
+                {videogameList && videogameList.map(gameListed => {
+                    return(<VideogameCard 
+                        key={gameListed.id} 
+                        id={gameListed.id} 
+                        img={gameListed.background_image} 
+                        name={gameListed.name} 
+                        rating_top={gameListed.rating_top} 
+                        genres={gameListed.genres.map(gen => <p key={gen.name}>{gen.name}</p>)}/>)
+                    })
+                }
             </div>
         </div>     
     )

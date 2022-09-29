@@ -139,7 +139,16 @@ export const Home = () => {
                 </div>
                 <div>
                     {(videogames.length >= 15) ? <Pagination onPrevious={onPrevious} onNext={onNext} pageNum={pageNum} videogames={videogames.length}/>: null}
-                    {(filteredVideogames().length > 0) ? filteredVideogames().map(game => {return(<VideogameCard key={game.id} id={game.id} img={game.background_image} name={game.name} rating_top={game.rating_top} genres={game.genres.map(g => <p key={g.name}>{g.name}</p>)}/>)}): <Loading/>}
+                    {(filteredVideogames().length > 0) ? filteredVideogames().map(game => {
+                        return(<VideogameCard 
+                            key={game.id} 
+                            id={game.id} 
+                            img={typeof game.id === 'number' ? game.background_image : null} 
+                            name={game.name} 
+                            rating_top={typeof game.id === 'number' ? game.rating_top : game.rating} 
+                            genres={typeof game.id === 'number' ? game.genres.map(g => <p key={g.name}>{g.name}</p>) : game.genre.map(g => <p key={g}>{g}</p>)}/>)})
+                        : <Loading/>
+                    }
                     {(videogames.length >= 15) ? <Pagination onPrevious={onPrevious} onNext={onNext} pageNum={pageNum} videogames={videogames.length}/>: null}
                 </div>
             </div>

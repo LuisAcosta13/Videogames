@@ -21,10 +21,19 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: rgba(14, 14, 14, 0.92);
   border-radius: 20px;
-  border: 3px solid rgb(56, 56, 56);
+  border: 2px solid rgb(56, 56, 56);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width: 600px){
+  body{
+    background-image: url('https://c.tenor.com/cZvfUv6UugAAAAAd/dark-souls-sit.gif');
+    background-size: cover;
+    background-position: 50%;
+    background-attachment: fixed;
+  }
 }

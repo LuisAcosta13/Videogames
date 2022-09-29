@@ -31,10 +31,14 @@ export default function Form(){
 
     function handlePlatformsSelect(e){
         if(newVideogame.platforms.length < 4){
+            if(!newVideogame.platforms.includes(e.target.value)){
                 setNewVideogame({
-                ...newVideogame,
-                platforms: [...newVideogame.platforms, e.target.value]
-            })
+                    ...newVideogame,
+                    platforms: [...newVideogame.platforms, e.target.value]
+                })
+            } else {
+                alert ('This platform was already selected!')
+            }
         } else {
             alert ('To many platforms!')
         }
@@ -42,10 +46,14 @@ export default function Form(){
     
     function handleGenresSelect(e){
         if(newVideogame.genre.length < 4){
+            if(!newVideogame.genre.includes(e.target.value)){
                 setNewVideogame({
-                ...newVideogame,
-                genre: [...newVideogame.genre, e.target.value]
-            })
+                    ...newVideogame,
+                    genre: [...newVideogame.genre, e.target.value]
+                })
+            } else {
+                alert ('This genre was already selected!')
+            }
         } else {
             alert ('To many genders!')
         }

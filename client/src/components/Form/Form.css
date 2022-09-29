@@ -49,3 +49,15 @@
     background-color: rgba(14, 14, 14, 0.92);
     animation: changeBackgroundColor 0.5s infinite alternate;
 }
+
+@media screen and (max-width: 600px){
+    .FormPage{
+        width: 80%;
+    }
+    .Form{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 180px;
+        width: 95%;
+        left: 3%;
+    }
+}

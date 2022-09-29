@@ -13,24 +13,41 @@
 
 .Logo{
     width: 90px;
-    margin-left: 7%;
-    margin-right: -50%;
+    margin-right: 4%;
+    margin-left: 50px;
+    margin-bottom: -4%;
 }
 
 .LinkHome{
     animation: changeFontColor 3s infinite alternate;
-    margin-left: 5%;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 160px;
 }
 
-.LinkHome, .LinkOne, .span{
+.LinkHome, .LinkOne{
     margin-right: 7%;
     text-decoration: none;
     color: rgb(203, 202, 202);
     font-family: 'Alegreya SC', serif;
 }
 
-
-.LinkOne:hover, span:hover{
+.LinkOne:hover{
     cursor: pointer;
     border-bottom: 2px solid #682411;
+}
+
+@media screen and (max-width: 600px){
+    .NavBar{
+        display: grid;
+    }
+    .LinkOne{
+        position: relative;
+        left: 130px;
+        width: 110%;
+        margin-top: 1px;
+        border-top: 1px solid;
+        border-color: aliceblue;
+    }
 }

@@ -6,8 +6,11 @@ export default function NavBar(){
     return(
         <div>
             <div className="NavBar">
-                <img className='Logo' src='https://www.pngplay.com/wp-content/uploads/12/Fornite-Black-Knight-PNG-Images-HD.png' alt='Knight'/>
-                <Link className='LinkHome' to='/videogames'><h2>LuishiGames</h2></Link>
+                <div>
+                    <img className='Logo' src='https://www.pngplay.com/wp-content/uploads/12/Fornite-Black-Knight-PNG-Images-HD.png' alt='Knight'/>
+                    <h2 className='LinkHome'>LuishiGames</h2>
+                </div>
+
                 <Link className='LinkOne'to='/form'><span>Create your game</span></Link>
             </div>
         </div>

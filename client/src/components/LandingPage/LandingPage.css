@@ -30,7 +30,7 @@
 .Text{
     position: relative;
     top: 10%;
-    margin: 10%
+    margin: 5%
 }
 
 .Enter{
@@ -50,4 +50,16 @@
 .Enter:hover{
     background-color: rgba(14, 14, 14, 0.92);
     animation: changeFontColor 1s infinite alternate;
+}
+
+@media screen and (max-width: 600px){
+    .Block{
+        left: 0%;
+        top: 25%;
+    }
+}
+
+audio{
+    width: 100px;
+    
 }

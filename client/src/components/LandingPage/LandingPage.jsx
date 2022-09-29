@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import './LandingPage.css'
 
 export default function LandingPage(){
-    
+    document.addEventListener('click', musicPlay);
+    function musicPlay() {
+        document.getElementById('music').play();
+        document.removeEventListener('click', musicPlay);
+    }
     return(
         <div className="LandingPage">
             <div className="Block">
+            Click anywhere for a medieval experience
                 <div className="Text">
                     <h1>Greetings traveler!<br/></h1>
                     Hail and Welcome to the beginning of a new adventure.<br/>
