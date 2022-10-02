@@ -28,8 +28,8 @@ router.get('/videogames', async (req, res) => {
             const { name } = req.query
             const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
             const apiGames = games.data.results
-            const gamesDB = await Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: {attributes: []}} })
-            const allGames = apiGames.concat(gamesDB)
+            const gamesDB = await Videogame.findAll({ where: {name: name}, include: { model: Genre, attributes: ['name'], through: {attributes: []}}})
+            const allGames = gamesDB.concat(apiGames)
     
             if (allGames) {
                 allGames.length = 15

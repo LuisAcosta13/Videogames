@@ -59,7 +59,7 @@ export default function Form(){
         }
     }
     
-    function handleSubmit(){
+    function  handleSubmit(){
         dispatch(newGame(newVideogame))
         alert('Your quest has been created... A new hero is born')
         history.push("/videogames")
