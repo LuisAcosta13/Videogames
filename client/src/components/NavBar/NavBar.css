@@ -2,9 +2,12 @@
 
 .NavBar{
     background-color: rgb(0, 0, 0);
-    padding: 1px;
+    width: 100%;
+    height: 91px;
     color: rgb(203, 202, 202);
-    display: flex;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 97px;
     justify-content: space-between;
     align-items: center;
     font-weight: 800;
@@ -13,24 +16,24 @@
 
 .Logo{
     width: 90px;
-    margin-right: 4%;
-    margin-left: 50px;
-    margin-bottom: -4%;
 }
 
 .LinkHome{
     animation: changeFontColor 3s infinite alternate;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 160px;
+    position: relative;
+    right: 50%;
 }
 
 .LinkHome, .LinkOne{
-    margin-right: 7%;
+    position: relative;
+    margin-right: 10%;
     text-decoration: none;
     color: rgb(203, 202, 202);
     font-family: 'Alegreya SC', serif;
+}
+
+.LinkOne{
+    width: 180px;
 }
 
 .LinkOne:hover{
@@ -42,12 +45,11 @@
     .NavBar{
         display: grid;
     }
+    .LinkHome{
+        right: 10px;
+    }
     .LinkOne{
-        position: relative;
-        left: 130px;
-        width: 110%;
-        margin-top: 1px;
-        border-top: 1px solid;
-        border-color: aliceblue;
+        width: 100px;
+        margin-left: 10px;
     }
 }
