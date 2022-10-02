@@ -76,6 +76,7 @@ export const Home = () => {
             }
         } else if(e.selectedIndex === 1){
             setCurrentPage(0)
+            setPageNum(1)
             dispatch(filterByDatabase())
             e.options[0].disabled = false
         } else {

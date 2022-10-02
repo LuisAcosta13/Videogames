@@ -9,7 +9,10 @@ export function getAllVideogames(){
                 payload: json.data
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('API is not responding correctly')
+            console.log(err)
+        })
     }
 }
 
@@ -22,7 +25,10 @@ export function getVideogame(game){
                 payload: json.data
             })    
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('The searched game does not exist, please recharge')
+            console.log(err)
+        })
     }
 }
 
@@ -35,7 +41,10 @@ export function getDetail(id){
                 payload: json.data
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('API is not responding correctly')
+            console.log(err)
+        })
     }
 }
 
@@ -48,7 +57,10 @@ export function filterByGenre(genre){
                 payload: json.data.filter(g => typeof g.id === 'number' ? g.genres.some(e => e.name === genre) : g.genre.includes(genre))
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('API is not responding correctly')
+            console.log(err)
+        })
     }
 }
 
@@ -61,14 +73,20 @@ export function filterByDatabase(){
                 payload: json.data
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('API is not responding correctly')
+            console.log(err)
+        })
     }
 }
 
 export function newGame(newVideogame){
     return async function (dispatch){
         return await axios.post('http://localhost:3001/videogames', newVideogame)
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('Creation process went wrong')
+            console.log(err)
+        })
     }
 }
 
@@ -81,6 +99,9 @@ export function deleteGame(id){
                 payload: id
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('Delete process went wrong')
+            console.log(err)
+        })
     }
 }
