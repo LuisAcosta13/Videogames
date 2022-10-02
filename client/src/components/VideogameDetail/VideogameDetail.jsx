@@ -1,22 +1,31 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetail } from "../../Redux/Actions";
+import { getDetail, deleteGame } from "../../Redux/Actions";
 import './VideogameDetail.css'
 
 export default function VideogameDetail(){
     const { id } = useParams()
     const detail = useSelector(state => state.videogameDetail)
     const dispatch = useDispatch()
+    const history = useHistory()
+
 
     useEffect(() => {
-        console.log(id)
         dispatch(getDetail(id))
-        
-    }, [dispatch, id])        
+    }, [dispatch, id])
+
+    function deleteVideogame(){
+        dispatch(deleteGame(id))
+        let option = window.confirm('Are you sure you want to quit?')
+        if(option === true){
+            alert('This quest is finished')
+        }
+        history.push("/videogames")
+    }
 
     return(
-        typeof detail.id === 'number'  ?   
+        typeof detail.id !== 'string'  ?   
                     <div>
                         <div className="DetailPage">
                             <div>
@@ -34,9 +43,6 @@ export default function VideogameDetail(){
                                 <div>
                                     <h4 className="Platforms">Available on: {detail.platforms && detail.platforms.map(p => <p key={p.platform.name}>{p.platform.name}</p>)}</h4>
                                 </div>
-                            </div>
-                            <div>
-                                <Link to='/videogames'><button>Back</button></Link>
                             </div>
                         </div>
                     </div> 
@@ -60,7 +66,7 @@ export default function VideogameDetail(){
                                 </div>
                             </div>
                             <div>
-                                <Link to='/videogames'><button>Back</button></Link>
+                                <button className="deleteButton" onClick={() => deleteVideogame()}>Delete</button>
                             </div>
                         </div>
                     </div>

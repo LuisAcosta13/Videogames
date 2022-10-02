@@ -10,7 +10,6 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/videogames', async (req, res) => {
-
     try {
         if (!req.query.name) {
             var games1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${1}`)
@@ -75,7 +74,6 @@ router.get('/genres', async (req, res) => {
 })
 
 router.post('/videogames', async (req, res) => {
-    
     try{
         const { name, description_raw, released, rating, platforms, genre } = req.body
         const newGame = await Videogame.create({ name, description_raw, released, rating, platforms, genre })
@@ -85,6 +83,22 @@ router.post('/videogames', async (req, res) => {
         res.send('Tu juego ha sido creado con éxito')
     } catch(e){
         console.log('Hubo un inconveniente con la creción del videojuego')
+        console.log(e)
+    }
+})
+
+router.delete('/videogames/:id', async (req, res) => {
+    try{
+        const { id } = req.params
+    
+        await Videogame.destroy({
+            where: {
+                id: id
+            }
+        })
+        res.send('El videojuego fue eliminado')
+    } catch(e){
+        console.log('Hubo un inconveniente con la eliminación del videojuego')
         console.log(e)
     }
 })

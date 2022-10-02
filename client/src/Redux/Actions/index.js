@@ -27,7 +27,6 @@ export function getVideogame(game){
 }
 
 export function getDetail(id){
-    console.log('accede a getDetail')
     return function(dispatch){
         return axios.get(`http://localhost:3001/videogames/${id}`)
         .then(json => {
@@ -43,7 +42,7 @@ export function getDetail(id){
 export function filterByGenre(genre){
     return function (dispatch){
         return axios.get(`http://localhost:3001/videogames`)
-        .then(json => { console.log()
+        .then(json => {
             dispatch({ 
                 type: 'FILTER_BY_GENRE',
                 payload: json.data.filter(g => typeof g.id === 'number' ? g.genres.some(e => e.name === genre) : g.genre.includes(genre))
@@ -69,11 +68,17 @@ export function filterByDatabase(){
 export function newGame(newVideogame){
     return function (dispatch){
         return axios.post('http://localhost:3001/videogames', newVideogame)
+        .catch(err => console.log(err))
+    }
+}
+
+export function deleteGame(id){
+    return function (dispatch){
+        return axios.delete(`http://localhost:3001/videogames/${id}`)
         .then(res => {
-            console.log(res.data)
             dispatch({
-                type: 'ADD_NEWGAME',
-                action: res.data
+                type: 'DELETE_GAME',
+                payload: id
             })
         })
         .catch(err => console.log(err))

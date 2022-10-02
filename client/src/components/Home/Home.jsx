@@ -11,16 +11,16 @@ export const Home = () => {
     
     const dispatch = useDispatch()
     const videogames = useSelector(state => state.videogames)
-    const [currentPage, setCurrentPage] = useState(0)
+    const [ currentPage, setCurrentPage ] = useState(0)
     const [ pageNum, setPageNum ] = useState(1)
-    const [filter, setFilter] = useState('')
+    const [ order, setOrder ] = useState('')
 
     useEffect(() => {
         dispatch(getAllVideogames())
     }, [dispatch])
 
     function filteredVideogames(){
-            switch(filter){
+            switch(order){
                 case 'A_Z':
                     const videogamesA_Z = videogames.sort(function compare_name( a, b ){
                         if ( a.name < b.name){
@@ -55,13 +55,13 @@ export const Home = () => {
         
     function byOrder(){
         if(document.getElementById('select').selectedIndex === 1){
-            setFilter('A_Z')
+            setOrder('A_Z')
         }
         if(document.getElementById('select').selectedIndex === 2){
-            setFilter('Z_A')
+            setOrder('Z_A')
         }
         if(document.getElementById('select').selectedIndex === 3){
-            setFilter('Rating')
+            setOrder('Rating')
         }
     }
 

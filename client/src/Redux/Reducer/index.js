@@ -2,7 +2,6 @@ const inicialState = {
     videogames: [],
     videogamesList: [],
     videogameDetail: {},
-    newGame:{}
 }
 
 export default function rootReducer(state = inicialState, action){
@@ -32,10 +31,10 @@ export default function rootReducer(state = inicialState, action){
                 ...state,
                 videogames: action.payload.filter(g => g.id.length > 10)
             }
-        case 'ADD_NEWGAME':
+        case 'DELETE_GAME':
             return {
                 ...state,
-                newGame: action.payload
+                videogames: state.videogames.filter(g => g.id !== action.payload)
             }
         default:
             return state
