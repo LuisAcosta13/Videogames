@@ -48,6 +48,13 @@ export function getDetail(id){
     }
 }
 
+export function removeDetail(payload){
+    return {
+        type: 'REMOVE_DETAIL',
+        payload: payload
+    }
+}
+
 export function filterByGenre(genre){
     return async function (dispatch){
         return await axios.get(`http://localhost:3001/videogames`)

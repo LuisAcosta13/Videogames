@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetail, deleteGame } from "../../Redux/Actions";
+import { getDetail, deleteGame, removeDetail } from "../../Redux/Actions";
+import Loading from "../Loading/Loading";
 import './VideogameDetail.css'
 
 export default function VideogameDetail(){
@@ -13,6 +14,9 @@ export default function VideogameDetail(){
 
     useEffect(() => {
         dispatch(getDetail(id))
+        return () => {
+            dispatch(removeDetail({}))
+        }
     }, [dispatch, id])
 
     function deleteVideogame(){
@@ -20,11 +24,11 @@ export default function VideogameDetail(){
         let option = window.confirm('Are you sure you want to quit?')
         if(option === true){
             alert('This quest is finished')
+            history.push("/videogames")
         }
-        history.push("/videogames")
     }
 
-    return(
+    return( detail.id ? 
         typeof detail.id !== 'string'  ?   
                     <div>
                         <div className="DetailPage">
@@ -69,6 +73,6 @@ export default function VideogameDetail(){
                                 <button className="deleteButton" onClick={() => deleteVideogame()}>Delete</button>
                             </div>
                         </div>
-                    </div>
+                    </div> : <Loading/>
     )
 }

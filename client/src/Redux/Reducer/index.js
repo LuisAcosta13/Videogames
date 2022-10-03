@@ -21,6 +21,11 @@ export default function rootReducer(state = inicialState, action){
                 ...state,
                 videogameDetail: action.payload
             }
+        case 'REMOVE_DETAIL':
+            return {
+                ...state,
+                videogameDetail: action.payload
+            }
         case 'FILTER_BY_GENRE':
             return {
                 ...state,
