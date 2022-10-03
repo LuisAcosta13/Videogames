@@ -3,11 +3,24 @@ import { Link } from "react-router-dom";
 import './NavBar.css'
 
 export default function NavBar(){
+    var playingMusic = true
+    
+    function controlMusic(){
+        if(playingMusic === true){
+            document.getElementById('music').pause()
+            playingMusic = false
+        } else {
+            document.getElementById('music').play()
+            playingMusic = true
+        }
+    }
+    
     return(
         <div>
             <div className="NavBar">
                 <div>
-                    <img className='Logo' src='https://www.pngplay.com/wp-content/uploads/12/Fornite-Black-Knight-PNG-Images-HD.png' alt='Knight'/>
+                    <p className="Music" onClick={controlMusic}>♬</p>
+                    <img  className='Logo' src='https://www.pngplay.com/wp-content/uploads/12/Fornite-Black-Knight-PNG-Images-HD.png' alt='Knight'/>
                 </div>
                 <div>    
                     <h2 className='LinkHome'>LuishiGames</h2>

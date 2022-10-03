@@ -107,7 +107,7 @@ export const Home = () => {
             setPageNum(pageNum - 1)
             setCurrentPage(currentPage - 15)
             page = currentPage - 15
-            num--
+            num = pageNum - 1
         }
     }
 
@@ -116,7 +116,7 @@ export const Home = () => {
             setPageNum(pageNum + 1)
             setCurrentPage(currentPage + 15)
             page = currentPage + 15
-            num++
+            num = pageNum + 1
         }
     }
 
