@@ -7,6 +7,10 @@ import './Home.css'
 import SearchBar from "../SearchBar/SearchBar";
 import Loading from "../Loading/Loading";
 
+var mounted = false
+var orderSelected = null
+var filter = null
+
 export const Home = () => {
     
     const dispatch = useDispatch()
@@ -16,7 +20,12 @@ export const Home = () => {
     const [ order, setOrder ] = useState('')
 
     useEffect(() => {
-        dispatch(getAllVideogames())
+        if(mounted === false){
+           dispatch(getAllVideogames())
+           mounted = true
+        }
+        document.getElementById('select').selectedIndex = orderSelected
+        document.getElementById('filter').selectedIndex = filter
     }, [dispatch])
 
     function filteredVideogames(){
@@ -54,6 +63,7 @@ export const Home = () => {
     }
         
     function byOrder(){
+       orderSelected = document.getElementById('select').selectedIndex
         if(document.getElementById('select').selectedIndex === 1){
             setOrder('A_Z')
         }
@@ -67,6 +77,7 @@ export const Home = () => {
 
     function byFilter(){
         var e = document.getElementById('filter')
+        filter = e.selectedIndex
         if(e.selectedIndex === 0){
             if(e.options[0].disabled === false){
                 setCurrentPage(0)
