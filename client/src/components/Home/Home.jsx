@@ -7,6 +7,8 @@ import './Home.css'
 import SearchBar from "../SearchBar/SearchBar";
 import Loading from "../Loading/Loading";
 
+var page = null
+var num = 1
 var mounted = false
 var orderSelected = null
 var filter = null
@@ -24,6 +26,8 @@ export const Home = () => {
            dispatch(getAllVideogames())
            mounted = true
         }
+        setCurrentPage(page)
+        setPageNum(num)
         document.getElementById('select').selectedIndex = orderSelected
         document.getElementById('filter').selectedIndex = filter
     }, [dispatch])
@@ -102,6 +106,8 @@ export const Home = () => {
         if(pageNum > 1){
             setPageNum(pageNum - 1)
             setCurrentPage(currentPage - 15)
+            page = currentPage - 15
+            num--
         }
     }
 
@@ -109,6 +115,8 @@ export const Home = () => {
         if(pageNum < 7){
             setPageNum(pageNum + 1)
             setCurrentPage(currentPage + 15)
+            page = currentPage + 15
+            num++
         }
     }
 
