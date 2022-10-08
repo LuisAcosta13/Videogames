@@ -22,7 +22,7 @@ export default function Validate(input) {
 
     if(!input.rating){
         errors.rating = 'A rating is required';
-    } else if (!/[0-5]/.test(input.rating)){
+    } else if (!/^([0-5])$/.test(input.rating)){
         errors.rating = 'This rating is invalid'
     }
 

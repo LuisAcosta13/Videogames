@@ -15,12 +15,12 @@ export default function SearchBar(){
     }
 
     function show(id){
-        var elem = document.getElementById(id)
+        let elem = document.getElementById(id)
         elem.style.display = 'block'
     }
 
     function hide(id){
-        var elem = document.getElementById(id)
+        let elem = document.getElementById(id)
         elem.style.display = 'none'
     }
 

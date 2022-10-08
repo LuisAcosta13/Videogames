@@ -7,11 +7,11 @@ import './Home.css'
 import SearchBar from "../SearchBar/SearchBar";
 import Loading from "../Loading/Loading";
 
-var page = null
-var num = 1
-var mounted = false
-var orderSelected = null
-var filter = null
+let page = null
+let num = 1
+let mounted = false
+let orderSelected = null
+let filter = null
 
 export const Home = () => {
     
@@ -80,7 +80,7 @@ export const Home = () => {
     }
 
     function byFilter(){
-        var e = document.getElementById('filter')
+        let e = document.getElementById('filter')
         filter = e.selectedIndex
         if(e.selectedIndex === 0){
             if(e.options[0].disabled === false){

@@ -14,10 +14,10 @@ export default function Pagination({onPrevious, onNext, pageNum, videogames}){
     }
 
     return(
-        <nav>
-            {(pageNum > 1) ? <button className="Prev" onClick={handlePrevious}>◀</button> : null}
+        <nav className="griNav">
+            {(pageNum > 1) ? <button className="Prev" onClick={handlePrevious}>☜</button> : null}
             <p className="PageNum">{pageNum}</p>
-            {(pageNum < (videogames / 15)) ? <button className="Next" onClick={handleNext}>▶</button> : null}
+            {(pageNum < (videogames / 15)) ? <button className="Next" onClick={handleNext}>☞</button> : null}
         </nav>
     )
 }

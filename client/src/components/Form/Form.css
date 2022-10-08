@@ -35,6 +35,11 @@
     border: none;
 }
 
+.deleteSelection{
+    width: 25px;
+    margin-left: 10px;
+}
+
 .submit{
     margin-bottom: 0%;
     width: 40%;

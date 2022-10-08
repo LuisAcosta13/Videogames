@@ -65,6 +65,20 @@ export default function Form(){
         history.push("/videogames")
     }
 
+    function deletePlatform(e){
+        setNewVideogame({
+            ...newVideogame,
+            platforms: newVideogame.platforms.filter(p => p !== e.target.value)
+        })
+    }
+
+    function deleteGenre(e){
+        setNewVideogame({
+            ...newVideogame,
+            genre: newVideogame.genre.filter(g => g !== e.target.value)
+        })
+    }
+
     return(
         <div className="FormPage">
             <Link to='/videogames'><button>Claudicate</button></Link>
@@ -105,7 +119,7 @@ export default function Form(){
                         <option value='Android'>Android</option>
                         <option value='iOS'>iOS</option>
                     </select><br/>
-                    {newVideogame.platforms.map(p => <b key={p}>{p}<br/></b>)}
+                    {newVideogame.platforms.map(p => <b key={p}>{p} <button className='deleteSelection' value={p} onClick={(e) => deletePlatform(e)}>✠</button><br/></b>)}
                 </div>
                 <div className="grid">
                     <h4>Genres</h4>
@@ -131,13 +145,11 @@ export default function Form(){
                         <option className='option' id='filterOp19' value='Racing'>Racing</option>
                         <option className='option' id='filterOp20' value='Board Games'>Board Games</option>
                     </select><br/>
-                    {newVideogame.genre.map(g => <b key={g}>{g}<br/></b> )}
+                    {newVideogame.genre.map(g => <b key={g}>{g}<button className='deleteSelection' value={g} onClick={(e) => deleteGenre(e)}>✠</button><br/></b> )}
                 </div>
 
-                {(newVideogame.name && 
-                    newVideogame.description_raw && newVideogame.released && 
-                    newVideogame.rating && newVideogame.platforms.length > 0 && 
-                    newVideogame.genre.length > 0) ? 
+                {(!errors.released && !errors.name && !errors.description_raw && !errors.released && 
+                    !errors.rating && newVideogame.platforms.length > 0 && newVideogame.genre.length > 0) ? 
                     <button className="submit" onClick={handleSubmit}>Enviar</button> 
                     : null}
             </div>

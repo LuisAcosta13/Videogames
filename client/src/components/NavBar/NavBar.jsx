@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './NavBar.css'
 
 export default function NavBar(){
-    var playingMusic = true
+    let playingMusic = true
     
     function controlMusic(){
         if(playingMusic === true){

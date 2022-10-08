@@ -6,7 +6,7 @@ export default function Loading(){
     
     setTimeout(() => {
         setLoading('Nothing to see here')
-    }, 7000);
+    }, 9000);
     
     return(
         <div className="LoadingPage">
