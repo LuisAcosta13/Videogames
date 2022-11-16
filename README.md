@@ -2,10 +2,6 @@
 
 ![LuishiGames](LuishiGames.png)
 
-<p align="right">
-  <img height="200" src="./videogame.png" />
-</p>
-
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.
