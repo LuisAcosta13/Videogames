@@ -25,6 +25,9 @@ export default function SearchBar(){
                     })
                 }
             </div>
-        </div> : <Loading/>
+        </div> :   <div>
+                <Link to='/videogames'><button>Back</button></Link>
+                <Loading/>
+            </div>
     )
 }
