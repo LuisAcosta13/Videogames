@@ -60,7 +60,7 @@ export default function SearchBar(){
                         Clean
                     </button>
                 </div>
-                {videogameList && videogameList.id ? videogameList.map(gameListed => {
+                {videogameList ? videogameList.map(gameListed => {
                     return(<VideogameCard 
                         key={gameListed.id} 
                         id={gameListed.id} 
