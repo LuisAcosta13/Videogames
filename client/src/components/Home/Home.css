@@ -32,9 +32,6 @@ button:hover, select:hover{
     left: 24%
 }
 
-.List{
-    display: none;
-}
 
 @media screen and (max-width: 600px){
     .Filters{

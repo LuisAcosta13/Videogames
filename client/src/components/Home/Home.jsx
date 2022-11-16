@@ -4,8 +4,9 @@ import { getAllVideogames, filterByGenre, filterByDatabase } from "../../Redux/A
 import Pagination from "../Pagination/Pagination.jsx";
 import VideogameCard from "../VideogameCard/VideogameCard.jsx";
 import './Home.css'
-import SearchBar from "../SearchBar/SearchBar";
+import { getVideogame } from "../../Redux/Actions"
 import Loading from "../Loading/Loading";
+import { useHistory } from "react-router-dom";
 
 let page = null
 let num = 1
@@ -16,6 +17,7 @@ let filter = null
 export const Home = () => {
     
     const dispatch = useDispatch()
+    const history = useHistory()
     const videogames = useSelector(state => state.videogames)
     const [ currentPage, setCurrentPage ] = useState(0)
     const [ pageNum, setPageNum ] = useState(1)
@@ -120,9 +122,31 @@ export const Home = () => {
         }
     }
 
+    const [game, setGame] = useState('')
+    
+    function handleInputChange(e){
+        setGame(e.target.value)
+    }
+
+    function handleSubmit(){
+        dispatch(getVideogame(game))
+        setGame('')
+        history.push('/search')
+    }
+
     return(
         <div className="Body">
-            <SearchBar/>
+            <div className="SearchBar">
+                <input 
+                    id='input' 
+                    type='text' 
+                    autoComplete="off"
+                    placeholder='Find a game...'
+                    value={game}
+                    onChange={(e) => handleInputChange(e)}
+                    onKeyDown={(e) =>{if(e.key === 'Enter'){handleSubmit()}}}
+                />
+            </div>
             <div id='Principal' className="Gallery">
                 <div id='Filters' className="Filters">
                     Order by: 
