@@ -2,7 +2,7 @@ const axios = require('axios')
 
 export function getAllVideogames(){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames`)
+        return axios.get(`/videogames`)
         .then(json => { 
             dispatch({
                 type: 'GET_ALL',
@@ -18,7 +18,7 @@ export function getAllVideogames(){
 
 export function getVideogame(game){
     return function(dispatch){
-        return axios.get(`http://localhost:3001/videogames?name=${game}`)
+        return axios.get(`/videogames?name=${game}`)
         .then(json => {
             dispatch({
                 type: 'GET_LIST',
@@ -34,7 +34,7 @@ export function getVideogame(game){
 
 export function getDetail(id){
     return function(dispatch){
-        return axios.get(`http://localhost:3001/videogames/${id}`)
+        return axios.get(`/videogames/${id}`)
         .then(json => {
             dispatch({
                 type: 'GET_DETAIL',
@@ -57,7 +57,7 @@ export function removeDetail(payload){
 
 export function filterByGenre(genre){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames`)
+        return axios.get(`/videogames`)
         .then(json => {
             dispatch({ 
                 type: 'FILTER_BY_GENRE',
