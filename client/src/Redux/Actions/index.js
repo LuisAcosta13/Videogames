@@ -73,7 +73,7 @@ export function filterByGenre(genre){
 
 export function filterByDatabase(){
     return function (dispatch){
-        return axios.get(`http://localhost:3001/videogames`)
+        return axios.get(`videogames`)
         .then(json => { 
             dispatch({ 
                 type: 'FILTER_BY_DATABASE',
@@ -89,7 +89,7 @@ export function filterByDatabase(){
 
 export function newGame(newVideogame){
     return function (){
-        return axios.post('http://localhost:3001/videogames', newVideogame)
+        return axios.post('videogames', newVideogame)
         .catch(err => {
             console.log('Creation process went wrong')
             console.log(err)
@@ -99,7 +99,7 @@ export function newGame(newVideogame){
 
 export function deleteGame(id){
     return function (dispatch){
-        return axios.delete(`http://localhost:3001/videogames/${id}`)
+        return axios.delete(`videogames/${id}`)
         .then(res => {
             dispatch({
                 type: 'DELETE_GAME',
