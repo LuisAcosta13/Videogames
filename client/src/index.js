@@ -9,7 +9,7 @@ import store from './Redux/Store/index'
 import axios from 'axios'
 
 // axios.defaults.baseURL = 'http://localhost:3001' /*Descomentar para trabajar local*/
-axios.defaults.baseURL = 'https://videogames-production-f644.up.railway.app' /*Descomentar para trabajar deploy*/
+axios.defaults.baseURL = 'https://videogames-production-9b59.up.railway.app/' /*Descomentar para trabajar deploy*/
 
 ReactDOM.render(
   <Provider store={store}>
