@@ -10,7 +10,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/videogames', async (req, res) => {
-    try {
+    try { 
         if (!req.query.name) {
             let games1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${1}`)
             let games2 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${2}`)

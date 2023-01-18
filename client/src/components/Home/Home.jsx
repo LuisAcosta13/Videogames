@@ -44,7 +44,7 @@ export const Home = () => {
                         if ( a.name > b.name){
                             return 1;
                         }
-                        return 0;
+                        return 0 ;
                     })
                     return videogamesA_Z.slice(currentPage, currentPage + 15)
                 
