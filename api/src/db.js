@@ -16,7 +16,9 @@ const sequelize = new Sequelize(DB_DEPLOY, {
   native: false,
   dialect: 'postgres',
   dialectOptions: {
-    ssl: true
+    ssl: {
+      rejectUnauthorized: false, // very important
+    }
   }
 });
 const basename = path.basename(__filename);
