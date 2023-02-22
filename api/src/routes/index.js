@@ -12,11 +12,11 @@ const router = Router();
 router.get('/videogames', async (req, res) => {
     try { 
         if (!req.query.name) {
-            let games1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${1}`)
-            let games2 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${2}`)
-            let games3 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${3}`)
-            let games4 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${4}`)
-            let games5 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${5}`)
+            let games1 = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&page=${1}`)
+            let games2 = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&page=${2}`)
+            let games3 = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&page=${3}`)
+            let games4 = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&page=${4}`)
+            let games5 = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&page=${5}`)
             const gamesTotal = games1.data.results.concat(games2.data.results, games3.data.results, games4.data.results,games5.data.results)
             const gamesDB = await Videogame.findAll({ include: { model: Genre, attributes: ['name'], through: {attributes: []}} })
             const allGames = gamesTotal.concat(gamesDB)
@@ -26,7 +26,7 @@ router.get('/videogames', async (req, res) => {
             }
         } else {
             const { name } = req.query
-            const games = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${encodeURI(name)}`)
+            const games = await axios.get(`https://api.rawg.io/api/games?key=6df927ecdff443ffa74507df2223a6ad&search=${encodeURI(name)}`)
             const apiGames = games.data.results
             const gamesDB = await Videogame.findAll({ where: {name: name}, include: { model: Genre, attributes: ['name'], through: {attributes: []}}})
             const allGames = gamesDB.concat(apiGames)
